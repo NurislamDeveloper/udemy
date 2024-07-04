@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:state_managment/features/presentataions/pages/tasks_list.dart';
+import 'buttum_sheet_page.dart';
 // import 'package:flutter/widgets.dart';
+
+
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
@@ -9,9 +13,16 @@ class TasksScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
-
         backgroundColor: Colors.lightBlueAccent,
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            // isScrollControlled: true, //if I write this part of code it consists all screen 
+            isScrollControlled: true,
+            builder: (context) => const ButtumSheetPage(),
+          );
+          // builderButtomSheet(context);
+        },
         child: const Icon(
           Icons.add,
           color: Colors.white,
@@ -62,7 +73,7 @@ class TasksScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Container(
+            child: Container( 
               height: 300.0,
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -73,6 +84,7 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              child: TasksList(),
             ),
           ),
         ],

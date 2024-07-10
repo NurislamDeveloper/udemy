@@ -1,8 +1,12 @@
 class Tasks {
-  final String name ;
-   bool  isDone ;
-   Tasks({ required this.name, this.isDone = false});
-   void  toggleDone () {
-    isDone = ! isDone;
-   }
+  Tasks({
+    required this.name,
+    this.isDone = false,
+  });
+  final String name;
+  bool isDone;
+  
+  void toggleDone() {
+    isDone = !isDone;
+  }
 }

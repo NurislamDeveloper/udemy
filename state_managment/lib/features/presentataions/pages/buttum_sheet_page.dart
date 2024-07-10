@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ButtumSheetPage extends StatelessWidget {
-  const ButtumSheetPage({super.key});
+class BottomSheetPage extends StatelessWidget {
+   BottomSheetPage(this.addTasksTitle,);
+  final Function addTasksTitle;
 
   @override
   Widget build(BuildContext context) {
+      String taskListTitle =" " ; // Initialize the variable with an empty string
     return SingleChildScrollView(
       child: Container(
         color: const Color(0xff757575),
@@ -24,39 +26,44 @@ class ButtumSheetPage extends StatelessWidget {
             children: <Widget>[
               const Text(
                 'Add Tasks',
-                textAlign: TextAlign.justify,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30.0,
                   color: Colors.lightBlueAccent,
                 ),
               ),
-              const TextField(
+              TextField(
                 autofocus: true,
                 textAlign: TextAlign.center,
+                onChanged: (newTasks) {
+                  taskListTitle = newTasks;
+                },
               ),
               const SizedBox(
                 height: 20,
               ),
               TextButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all<Color>(
+                  backgroundColor: MaterialStateProperty.all<Color>(
                     Colors.blue,
                   ),
-                  minimumSize: WidgetStateProperty.all(
+                  minimumSize: MaterialStateProperty.all(
                     const Size(
                       400,
                       50,
                     ),
                   ), // Minimum size
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  addTasksTitle(taskListTitle);
+                },
                 child: const Text(
                   "Add",
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

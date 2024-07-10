@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:state_managment/features/model/tasks.dart';
 import 'package:state_managment/features/presentataions/pages/tasks_list.dart';
 import 'buttum_sheet_page.dart';
 // import 'package:flutter/widgets.dart';
 
-
-
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Tasks> task = [
+    Tasks(name: "buy milk"),
+    Tasks(name: "buy eggs"),
+    Tasks(name: "buy bread"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +27,19 @@ class TasksScreen extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            // isScrollControlled: true, //if I write this part of code it consists all screen 
+            // isScrollControlled: true, //if I write this part of code it consists all screen
             isScrollControlled: true,
-            builder: (context) => const ButtumSheetPage(),
+            builder: (context) => BottomSheetPage(
+              (newTaskTitle) {
+                setState(
+                  () {
+                    task.add(Tasks(name: newTaskTitle));
+                  },
+                );
+                Navigator.pop(context);
+              },
+            ),
           );
-          // builderButtomSheet(context);
         },
         child: const Icon(
           Icons.add,
@@ -39,10 +57,10 @@ class TasksScreen extends StatelessWidget {
               right: 30,
               bottom: 30,
             ),
-            child: const Column(
+            child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 30.0,
                   child: Icon(
@@ -51,10 +69,10 @@ class TasksScreen extends StatelessWidget {
                     size: 30.0,
                   ),
                 ),
-                SizedBox(
+                 const SizedBox(
                   height: 10.0,
                 ),
-                Text(
+                 const Text(
                   'Todoey',
                   style: TextStyle(
                     color: Colors.white,
@@ -63,8 +81,8 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '12 tasks',
-                  style: TextStyle(
+                  "${task.length}",
+                  style: const  TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                   ),
@@ -73,7 +91,7 @@ class TasksScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Container( 
+            child: Container(
               height: 300.0,
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -84,7 +102,9 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              child: TasksList(),
+              child: TasksList(
+                task: const [],
+              ),
             ),
           ),
         ],

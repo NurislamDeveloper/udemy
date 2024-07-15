@@ -21,6 +21,7 @@ class TasksTitle extends StatelessWidget {
           color: Colors.black,
           decoration: isChecked ? TextDecoration.lineThrough : null,
         ),
+        
       ),
       trailing: Checkbox(
         value: isChecked,

@@ -12,9 +12,9 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   List<Tasks> task = [
-    Tasks(name: 'buy milk'),
-    Tasks(name: 'buy eggs'),
-    Tasks(name: 'buy bread'),
+    // Tasks(name: 'buy milk'),
+    // Tasks(name: 'buy eggs'),
+    // Tasks(name: 'buy bread'),
   ];
 
   void addTask(String NTaskTitle) {

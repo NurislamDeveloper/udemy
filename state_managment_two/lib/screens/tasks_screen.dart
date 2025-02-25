@@ -3,7 +3,7 @@ import 'package:state_managment_two/models/task_title_model.dart';
 import 'package:state_managment_two/widgets/add_task_screen.dart';
 import 'package:state_managment_two/widgets/tasks_list.dart';
 
-class TasksScreen extends StatefulWidget {
+class  TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
 
   @override
@@ -17,9 +17,9 @@ class _TasksScreenState extends State<TasksScreen> {
     // Tasks(name: 'buy bread'),
   ];
 
-  void addTask(String NTaskTitle) {
+  void addTask(String askTitle) {
     setState(() {
-      task.add(Tasks(name: NTaskTitle));
+      task.add(Tasks(name: askTitle));
     });
     Navigator.pop(context); // Close the AddTaskScreen
   }

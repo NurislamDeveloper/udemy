@@ -3,7 +3,7 @@ import 'package:state_managment_two/models/task_title_model.dart';
 import 'package:state_managment_two/widgets/task_title.dart';
 
 class TasksList extends StatefulWidget {
-  TasksList(this.task
+   TasksList(this.task
   );
 
   final List<Tasks> task;

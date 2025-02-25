@@ -36,6 +36,7 @@ class BottomSheetPage extends StatelessWidget {
                 autofocus: true,
                 textAlign: TextAlign.center,
                 onChanged: (newTasks) {
+                  
                   taskListTitle = newTasks;
                 },
               ),
@@ -55,6 +56,7 @@ class BottomSheetPage extends StatelessWidget {
                   ), // Minimum size
                 ),
                 onPressed: () {
+                  
                   addTasksTitle(taskListTitle);
                 },
                 child: const Text(

@@ -7,6 +7,6 @@ class Tasks {
   bool isDone;
   
   void toggleDone() {
-    isDone = !isDone;
+    isDone =!isDone;
   }
 }
